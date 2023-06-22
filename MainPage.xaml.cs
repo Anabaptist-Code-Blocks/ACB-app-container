@@ -2,11 +2,17 @@
 
 public partial class MainPage : ContentPage
 {
-	public MainPage()
+#if ANDROID
+    public static WebView webview;
+#endif
+    public MainPage()
 	{
 		InitializeComponent();
         webView.Navigating += WebView_Navigating;
-	}
+#if ANDROID
+        webview = webView;
+#endif
+    }
 
     private void WebView_Navigating(object sender, WebNavigatingEventArgs e)
     {
